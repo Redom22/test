@@ -178,10 +178,7 @@
         }
         .card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.08); }
         .card h3 { font-size: 1.3rem; color: var(--primary); margin-bottom: 0.5rem; }
-        .price { font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem; }
-        .status { font-weight: 700; font-size: 0.95rem; margin-bottom: 1.5rem; }
-        .status.available { color: var(--success); }
-        .status.sold-out { color: var(--danger); }
+        .price { font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 1.5rem; }
 
         .controls { display: flex; gap: 0.5rem; margin-top: auto; }
         .controls input { width: 70px; padding: 0.6rem; border: 1px solid var(--border); border-radius: 8px; text-align: center; font-weight: bold; outline: none; }
@@ -196,22 +193,35 @@
             font-weight: bold; 
             transition: 0.2s; 
         }
-        .controls button:hover:not(:disabled) { background: var(--primary-light); }
-        .controls button:disabled { background: var(--border); color: var(--text-muted); cursor: not-allowed; }
+        .controls button:hover { background: var(--primary-light); }
 
-        /* GALLERY FRAMES */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        /* CLUB GALLERY (1 velká, 1 malá na mapu) */
+        .club-gallery {
+            display: flex;
+            flex-direction: column;
             gap: 1.5rem;
             margin-top: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .club-gallery {
+                flex-direction: row;
+                align-items: center;
+            }
+            .club-photo {
+                flex: 2;
+                height: 380px;
+            }
+            .map-photo {
+                flex: 1;
+                height: 250px;
+            }
         }
 
         .photo-frame {
             background: #ffffff;
             border: 2px dashed var(--border);
             border-radius: 12px;
-            height: 220px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -220,6 +230,7 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            width: 100%;
         }
 
         .photo-frame img {
@@ -355,6 +366,10 @@
             header { justify-content: center; flex-direction: column; text-align: center; }
             .header-right { flex-direction: column; gap: 0.5rem; }
             .form-grid, .options-grid { grid-template-columns: 1fr; }
+            .club-gallery {
+                /* Na mobilech budou fotky nad sebou, obě stejně vysoké */
+            }
+            .photo-frame { height: 250px; }
         }
     </style>
 </head>
@@ -430,19 +445,15 @@
             <p><strong>Lokace:</strong> Sídlíme v Los Santos, u horní benzínky.</p>
         </div>
 
-        <h3 class="section-title">Fotogalerie podniku</h3>
-        <div class="gallery-grid">
-            <div class="photo-frame">
-                <img src="klub1.jpg" alt="Apex Club 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <span style="display:none;">Chybí klub1.jpg</span>
+        <h3 class="section-title">Fotogalerie podniku & Mapa</h3>
+        <div class="club-gallery">
+            <div class="photo-frame club-photo">
+                <img src="klub.jpg" alt="Apex Club" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display:none;">Chybí klub.jpg</span>
             </div>
-            <div class="photo-frame">
-                <img src="klub2.jpg" alt="Apex Club 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <span style="display:none;">Chybí klub2.jpg</span>
-            </div>
-            <div class="photo-frame">
-                <img src="klub3.jpg" alt="Apex Club 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <span style="display:none;">Chybí klub3.jpg</span>
+            <div class="photo-frame map-photo">
+                <img src="mapa.jpg" alt="Mapa klubu" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display:none;">Chybí mapa.jpg</span>
             </div>
         </div>
     </div>
@@ -450,7 +461,6 @@
     <!-- TAB: KONTAKTY -->
     <div id="tab-kontakty" class="tab-content">
         
-        <!-- BANNER PRO KONTAKTY (Zarovnaný, bez loga) -->
         <div class="hero-banner" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
             <h1 style="margin-bottom: 0.5rem;">Vedení & Kontakty</h1>
             <p style="margin: 0;">Náš tým specialistů v čele Apex Group</p>
@@ -607,82 +617,21 @@
 
 <script>
     // =========================================================
-    // DISCORD & JSONBIN KONFIGURACE
+    // DISCORD KONFIGURACE (JSONBin odebrán, protože neřešíme omezené zásoby)
     // =========================================================
-    const DISCORD_WEBHOOK = 'https://discord.com/api/webhooks/1531060579408547941/nsPqcfd1C_0i86F2te58C7f1lXBx6sgBFWCJ7F2WQHAQIJhhMrlx4dSvIy0Wo-Ot5PT6';
-    
-    // AKTUALIZOVANÉ ÚDAJE JSONBIN
-    const BIN_ID = '6a672f4bf5f4af5e29c719bb'; 
-    const API_KEY = '$2a$10$09NqtvHLMoa2wnPIiL1ZK.giqg8piq4.Du/DJL9GkDMFwHjTOCxZu'; 
-    
-    const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+    const DISCORD_WEBHOOK = 'https://discord.com/api/webhooks/1509569723355103262/eT2CT_5ezEQ4rrEL-L_C4WTv_-Hq3pxw0ml-5pRuAE-HtHhbbNLhFXE4yqJ_2WP8l7u3';
     // =========================================================
 
     const produkty = [
-        { id: 1, name: 'Lokátor', type: 'apexsecurity', price: 50000, stock: 0 }
+        { id: 1, name: 'Lokátor', type: 'apexsecurity', price: 2000000 }
     ];
 
     let cart = [];
     let currentOrderNumber = '';
 
-    // Načtení dat o zásobách z JSONBin.io
-    async function loadSavedStock() {
-        try {
-            const response = await fetch(JSONBIN_URL + '/latest', {
-                headers: { 
-                    'X-Master-Key': API_KEY,
-                    'X-Bin-Meta': 'false'
-                }
-            });
-            const skladNaServeru = await response.json();
-            
-            produkty.forEach(p => {
-                if (skladNaServeru && skladNaServeru[p.id] !== undefined) {
-                    p.stock = parseInt(skladNaServeru[p.id], 10);
-                }
-            });
-
-            renderProducts('apexsecurity');
-        } catch (error) {
-            console.error("Chyba při načítání skladu z JSONBin:", error);
-            renderProducts('apexsecurity');
-        }
-    }
-
-    // Uložení aktuálního stavu skladu na JSONBin po zakoupení
-    async function saveCurrentStock() {
-        try {
-            const getRes = await fetch(JSONBIN_URL + '/latest', { 
-                headers: { 
-                    'X-Master-Key': API_KEY,
-                    'X-Bin-Meta': 'false'
-                } 
-            });
-            let aktualniSklad = await getRes.json();
-
-            cart.forEach(item => {
-                const id = item.product.id;
-                if(aktualniSklad[id] !== undefined) {
-                    aktualniSklad[id] -= item.qty;
-                    if(aktualniSklad[id] < 0) aktualniSklad[id] = 0;
-                }
-            });
-
-            await fetch(JSONBIN_URL, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-Master-Key': API_KEY
-                },
-                body: JSON.stringify(aktualniSklad)
-            });
-        } catch (error) {
-            console.error("Chyba při uložení na JSONBin:", error);
-        }
-    }
-
     window.onload = () => {
-        loadSavedStock();
+        // Vykreslíme produkty rovnou při načtení stránky
+        renderProducts('apexsecurity');
     };
 
     function switchTab(tabName) {
@@ -703,19 +652,13 @@
         const items = produkty.filter(p => p.type === type);
         
         items.forEach(product => {
-            const isAvailable = product.stock > 0;
-            const statusClass = isAvailable ? 'available' : 'sold-out';
-            const statusText = isAvailable ? `K dispozici: ${product.stock} ks` : 'Vyprodáno';
-            const disabled = !isAvailable ? 'disabled' : '';
-
             grid.innerHTML += `
                 <div class="card">
                     <h3>${product.name}</h3>
                     <div class="price">${product.price.toLocaleString()} Kč</div>
-                    <div class="status ${statusClass}">${statusText}</div>
                     <div class="controls">
-                        <input type="number" id="qty-${product.id}" min="1" max="${product.stock}" value="1" ${disabled}>
-                        <button onclick="addToCart(${product.id})" ${disabled}>Do košíku</button>
+                        <input type="number" id="qty-${product.id}" min="1" value="1">
+                        <button onclick="addToCart(${product.id})">Do košíku</button>
                     </div>
                 </div>
             `;
@@ -728,7 +671,6 @@
         let qty = parseInt(qtyInput.value);
 
         if (isNaN(qty) || qty <= 0) return alert('Zadejte platný počet.');
-        if (qty > product.stock) return alert(`K dispozici je pouze ${product.stock} ks.`);
 
         const existing = cart.find(item => item.product.id === id);
         if (existing) {
@@ -737,11 +679,8 @@
             cart.push({ product, qty });
         }
 
-        product.stock -= qty;
         qtyInput.value = 1;
-        
         updateCartCount();
-        renderProducts(product.type);
     }
 
     function updateCartCount() {
@@ -864,12 +803,9 @@
                 });
             }
 
-            await saveCurrentStock();
-            
+            // Vyprázdnění košíku po úspěšné objednávce
             cart = [];
             updateCartCount();
-            
-            await loadSavedStock();
             
             document.getElementById('checkout-form').classList.add('hidden');
             document.getElementById('success-order-num').innerText = currentOrderNumber;
