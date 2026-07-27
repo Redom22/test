@@ -50,6 +50,7 @@
             height: 48px;
             width: auto;
             object-fit: contain;
+            border-radius: 4px;
         }
 
         .logo-text { 
@@ -115,7 +116,7 @@
             bottom: -20px;
             width: 180px;
             height: 180px;
-            background: url('k8rs19m.webp') no-repeat center center / contain;
+            background: url('1bz2b30_2.webp') no-repeat center center / contain;
             opacity: 0.12;
             pointer-events: none;
         }
@@ -361,7 +362,7 @@
 
 <header>
     <a class="logo-container" onclick="switchTab('apexgroup')">
-        <img src="k8rs19m.webp" alt="Apex Logo" class="logo-img">
+        <img src="1bz2b30_2.webp" alt="Apex Logo" class="logo-img">
         <span class="logo-text">Apex Group</span>
     </a>
     <div class="header-right">
@@ -448,9 +449,12 @@
 
     <!-- TAB: KONTAKTY -->
     <div id="tab-kontakty" class="tab-content">
-        <div class="hero-banner" style="text-align: center;">
-            <h1>Vedení & Kontakty</h1>
-            <p>Náš tým specialistů v čele Apex Group</p>
+        
+        <!-- VYLEPŠENÝ BANNER PRO KONTAKTY (Zarovnaný + Logo) -->
+        <div class="hero-banner" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+            <img src="1bz2b30_2.webp" alt="Apex Group Logo" style="height: 120px; object-fit: contain; margin-bottom: 1.2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+            <h1 style="margin-bottom: 0.5rem;">Vedení & Kontakty</h1>
+            <p style="margin: 0;">Náš tým specialistů v čele Apex Group</p>
         </div>
 
         <div class="leadership-list">
@@ -497,8 +501,8 @@
 
         <div class="contact-box">
             <h3>Oficiální kontakty</h3>
-            <p>vedeni@apex.ic</p>
-            <p>objednavky@apex.ic</p>
+            <p>matthew.hill@post.ic</p>
+            <p>alexander.hill@post.ic</p>
         </div>
     </div>
 </main>
@@ -608,14 +612,15 @@
     // =========================================================
     const DISCORD_WEBHOOK = 'https://discord.com/api/webhooks/1509569723355103262/eT2CT_5ezEQ4rrEL-L_C4WTv_-Hq3pxw0ml-5pRuAE-HtHhbbNLhFXE4yqJ_2WP8l7u3';
     
-    const BIN_ID = '6a672bd3f5f4af5e29c70c5d'; 
-    const API_KEY = '$2a$10$SEjsnjmm8Dr4/h2LDQ.5i.WrtliWLG80JwFFV43OkinPOZKop2yD6'; 
+    // AKTUALIZOVANÉ ÚDAJE JSONBIN (dle tvého zadání)
+    const BIN_ID = '6a672f4bf5f4af5e29c719bb'; 
+    const API_KEY = '$2a$10$09NqtvHLMoa2wnPIiL1ZK.giqg8piq4.Du/DJL9GkDMFwHjTOCxZu'; 
     
     const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
     // =========================================================
 
     const produkty = [
-        { id: 1, name: 'Lokátor', type: 'apexsecurity', price: 2000000, stock: 0 }
+        { id: 1, name: 'Lokátor', type: 'apexsecurity', price: 50000, stock: 0 }
     ];
 
     let cart = [];
