@@ -116,8 +116,8 @@
             bottom: -20px;
             width: 180px;
             height: 180px;
-            background: url('1bz2b30_3.webp') no-repeat center center / contain;
-            opacity: 0.12;
+            background: url('k8rs19m_2.webp') no-repeat center center / contain;
+            opacity: 0.15;
             pointer-events: none;
         }
 
@@ -360,7 +360,7 @@
 
 <header>
     <a class="logo-container" onclick="switchTab('apexgroup')">
-        <img src="1bz2b30_3.webp" alt="Apex Logo" class="logo-img">
+        <img src="k8rs19m_2.webp" alt="Apex Logo" class="logo-img">
         <span class="logo-text">Apex Group</span>
     </a>
     <div class="header-right">
@@ -424,8 +424,14 @@
         </div>
 
         <div class="info-card">
-            <h2>Klubové prostory</h2>
+            <h2>Klubové prostory & Lokace</h2>
             <p><strong>Lokace:</strong> Sídlíme v Los Santos, u horní benzínky.</p>
+            <div style="max-width: 550px; margin: 1.2rem auto 0 auto;">
+                <div class="photo-frame" style="height: 260px;">
+                    <img src="mapa.jpg" alt="Mapa klubu" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span style="display:none;">Chybí mapa.jpg</span>
+                </div>
+            </div>
         </div>
 
         <h3 class="section-title">Fotogalerie podniku</h3>
@@ -441,14 +447,6 @@
             <div class="photo-frame">
                 <img src="klub3.jpg" alt="Apex Club 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <span style="display:none;">Chybí klub3.jpg</span>
-            </div>
-        </div>
-
-        <h3 class="section-title">Mapa - Kde nás najdete</h3>
-        <div style="max-width: 600px; margin: 0 auto;">
-            <div class="photo-frame" style="height: 280px;">
-                <img src="mapa.jpg" alt="Mapa klubu" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <span style="display:none;">Chybí mapa.jpg</span>
             </div>
         </div>
     </div>
@@ -625,7 +623,6 @@
     let currentOrderNumber = '';
 
     window.onload = () => {
-        // Vykreslíme produkty rovnou při načtení stránky
         renderProducts('apexsecurity');
     };
 
@@ -798,7 +795,6 @@
                 });
             }
 
-            // Vyprázdnění košíku po úspěšné objednávce
             cart = [];
             updateCartCount();
             
