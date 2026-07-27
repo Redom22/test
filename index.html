@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apex Group | Obchod</title>
+    <title>Apex Group | Oficiální prezentace</title>
     <style>
         :root {
-            --primary: #1e40af;
-            --primary-light: #3b82f6;
-            --bg: #f0f5f9;
+            --primary: #0C303C;
+            --primary-light: #184c5e;
+            --accent: #00c2b2;
+            --accent-hover: #009e91;
+            --bg: #f4f7f8;
             --card-bg: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
+            --text-main: #0C303C;
+            --text-muted: #526871;
+            --border: #d2e0e5;
             --success: #10b981;
             --danger: #ef4444;
         }
@@ -20,89 +22,339 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
         body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; }
 
-        header { background: var(--card-bg); padding: 1rem 5%; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 3px solid var(--primary); gap: 1rem; flex-wrap: wrap; }
-        .logo { font-size: 1.6rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 0.6rem; text-transform: uppercase; letter-spacing: -0.5px; }
-        .logo span { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; padding: 0.3rem 0.9rem; border-radius: 8px; font-size: 1.5rem; font-weight: 900; box-shadow: 0 4px 6px rgba(30, 64, 175, 0.2); }
-        
-        .header-right { display: flex; align-items: center; gap: 1.5rem; }
-        
-        .help-notice { font-size: 0.85rem; font-weight: 600; color: var(--primary); background: #e0f2fe; padding: 0.5rem 1rem; border-radius: 20px; border: 1px solid #bae6fd; display: flex; align-items: center; gap: 0.5rem; animation: arrowPulse 1.5s infinite ease-in-out; }
-        
-        @keyframes arrowPulse {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(4px); }
+        /* HEADER & NAV */
+        header { 
+            background: var(--card-bg); 
+            padding: 0.8rem 5%; 
+            box-shadow: 0 4px 15px rgba(12, 48, 60, 0.08); 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+            border-bottom: 4px solid var(--primary); 
+            gap: 1rem; 
+            flex-wrap: wrap; 
         }
 
-        nav { display: flex; gap: 0.5rem; align-items: center; }
-        nav button { background: transparent; border: none; font-size: 1rem; font-weight: 600; color: var(--text-muted); padding: 0.5rem 1rem; cursor: pointer; border-radius: 6px; transition: all 0.3s; }
-        nav button:hover { background: #e0f2fe; color: var(--primary); }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text { 
+            font-size: 1.5rem; 
+            font-weight: 900; 
+            color: var(--primary); 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+        }
+
+        .header-right { display: flex; align-items: center; gap: 1.5rem; }
+
+        nav { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+        nav button { 
+            background: transparent; 
+            border: 1px solid transparent; 
+            font-size: 0.95rem; 
+            font-weight: 700; 
+            color: var(--primary); 
+            padding: 0.6rem 1.1rem; 
+            cursor: pointer; 
+            border-radius: 8px; 
+            transition: all 0.25s ease; 
+        }
+        nav button:hover { background: #e8f1f4; color: var(--primary); }
         nav button.active { background: var(--primary); color: white; }
         
-        .cart-btn { display: flex; align-items: center; gap: 0.5rem; background: var(--primary-light) !important; color: white !important; }
-        .cart-btn:hover { background: var(--primary) !important; }
-        .cart-icon { width: 20px; height: 20px; fill: currentColor; }
-        .cart-badge { background: white; color: var(--primary); padding: 0.1rem 0.4rem; border-radius: 12px; font-size: 0.85rem; font-weight: bold; }
+        .cart-btn { 
+            display: flex; 
+            align-items: center; 
+            gap: 0.5rem; 
+            background: var(--accent) !important; 
+            color: white !important; 
+            border-radius: 8px;
+        }
+        .cart-btn:hover { background: var(--accent-hover) !important; }
+        .cart-icon { width: 18px; height: 18px; fill: currentColor; }
+        .cart-badge { background: white; color: var(--primary); padding: 0.1rem 0.5rem; border-radius: 12px; font-size: 0.85rem; font-weight: bold; }
 
-        main { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
+        /* MAIN LAYOUT */
+        main { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
         .tab-content { display: none; animation: fadeIn 0.4s ease; }
         .tab-content.active { display: block; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* HERO & INFO BOXES */
+        .hero-banner {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(12, 48, 60, 0.15);
+        }
+
+        .hero-banner::after {
+            content: "";
+            position: absolute;
+            right: -20px;
+            bottom: -20px;
+            width: 180px;
+            height: 180px;
+            background: url('k8rs19m.webp') no-repeat center center / contain;
+            opacity: 0.12;
+            pointer-events: none;
+        }
+
+        .hero-banner h1 { font-size: 2.2rem; margin-bottom: 0.5rem; font-weight: 800; }
+        .hero-banner p { font-size: 1.1rem; opacity: 0.9; max-width: 700px; }
+
+        .info-card {
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            border-top: 5px solid var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            margin-bottom: 2rem;
+        }
+
+        .info-card h2 {
+            color: var(--primary);
+            font-size: 1.6rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .info-card p {
+            color: var(--text-main);
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .info-card p:last-child { margin-bottom: 0; }
+
+        /* GRID & PRODUCTS */
+        .section-title {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin: 2rem 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
-        .card { background: var(--card-bg); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 2px 10px rgba(0,0,0,0.02); display: flex; flex-direction: column; transition: transform 0.2s; border-top: 4px solid var(--primary-light); }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        
+        .card { 
+            background: var(--card-bg); 
+            padding: 1.8rem; 
+            border-radius: 14px; 
+            border: 1px solid var(--border); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03); 
+            display: flex; 
+            flex-direction: column; 
+            transition: transform 0.2s, box-shadow 0.2s; 
+            border-top: 5px solid var(--accent); 
+        }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.08); }
         .card h3 { font-size: 1.3rem; color: var(--primary); margin-bottom: 0.5rem; }
-        .price { font-size: 1.4rem; font-weight: bold; color: var(--text-main); margin-bottom: 0.5rem; }
-        .status { font-weight: 600; font-size: 0.95rem; margin-bottom: 1.5rem; }
+        .price { font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem; }
+        .status { font-weight: 700; font-size: 0.95rem; margin-bottom: 1.5rem; }
         .status.available { color: var(--success); }
         .status.sold-out { color: var(--danger); }
 
         .controls { display: flex; gap: 0.5rem; margin-top: auto; }
-        .controls input { width: 70px; padding: 0.5rem; border: 1px solid var(--border); border-radius: 6px; text-align: center; font-weight: bold; outline: none; }
+        .controls input { width: 70px; padding: 0.6rem; border: 1px solid var(--border); border-radius: 8px; text-align: center; font-weight: bold; outline: none; }
         .controls input:focus { border-color: var(--primary); }
-        .controls button { flex: 1; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.2s; }
+        .controls button { 
+            flex: 1; 
+            background: var(--primary); 
+            color: white; 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            transition: 0.2s; 
+        }
         .controls button:hover:not(:disabled) { background: var(--primary-light); }
         .controls button:disabled { background: var(--border); color: var(--text-muted); cursor: not-allowed; }
 
-        .vedeni-box { background: white; max-width: 600px; margin: 0 auto; padding: 3rem; border-radius: 12px; text-align: center; border-top: 5px solid var(--primary); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .vedeni-box h2 { color: var(--primary); margin-bottom: 1.5rem; font-size: 2rem; }
-        .vedeni-box h3 { color: var(--primary-light); margin: 1.5rem 0 1rem 0; font-size: 1.5rem; }
-        .vedeni-info { text-align: left; display: inline-block; }
-        .vedeni-info p { font-size: 1.1rem; margin-bottom: 0.6rem; color: var(--text-main); }
-        .vedeni-info span { font-weight: bold; color: var(--primary); }
+        /* PHOTO FRAMES GALLERY */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
 
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); display: none; justify-content: center; align-items: center; z-index: 1000; }
-        .modal { background: var(--card-bg); padding: 2rem; border-radius: 16px; width: 90%; max-width: 650px; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); }
+        .photo-frame {
+            background: #ffffff;
+            border: 2px dashed var(--border);
+            border-radius: 12px;
+            height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-frame:hover {
+            border-color: var(--accent);
+            background: #f0f8f9;
+            color: var(--primary);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .photo-frame-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* VEDENÍ / LEADERSHIP VERTICAL LIST */
+        .leadership-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 550px;
+            margin: 0 auto 3rem auto;
+        }
+
+        .member-card {
+            background: var(--card-bg);
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            padding: 1.8rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border-top: 4px solid var(--primary);
+            transition: transform 0.2s;
+        }
+
+        .member-card:hover { transform: translateY(-3px); }
+
+        .member-photo-frame {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
+            background: #eef4f6;
+            margin: 0 auto 1.2rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .member-photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-name {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .member-role {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-box {
+            background: var(--primary);
+            color: white;
+            padding: 2rem;
+            border-radius: 14px;
+            text-align: center;
+            max-width: 550px;
+            margin: 0 auto;
+            box-shadow: 0 8px 20px rgba(12, 48, 60, 0.15);
+            position: relative;
+        }
+
+        .contact-box h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .contact-box p {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* MODAL */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(12, 48, 60, 0.7); backdrop-filter: blur(4px); display: none; justify-content: center; align-items: center; z-index: 1000; }
+        .modal { background: var(--card-bg); padding: 2rem; border-radius: 16px; width: 90%; max-width: 650px; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.25); }
         .close-btn { position: absolute; top: 1.5rem; right: 1.5rem; background: var(--bg); border: none; width: 35px; height: 35px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; color: var(--text-main); transition: 0.2s; }
         .close-btn:hover { background: var(--danger); color: white; }
 
-        .order-number-large { font-size: 1.8rem; font-weight: 900; color: var(--primary); text-align: center; margin-bottom: 1.5rem; padding: 1rem; background: var(--bg); border-radius: 8px; border: 2px dashed var(--primary-light); }
+        .order-number-large { font-size: 1.8rem; font-weight: 900; color: var(--primary); text-align: center; margin-bottom: 1.5rem; padding: 1rem; background: var(--bg); border-radius: 8px; border: 2px dashed var(--accent); }
         
         .cart-item { display: flex; justify-content: space-between; padding: 0.8rem 0; border-bottom: 1px solid var(--border); font-size: 1.1rem; }
         .cart-item-name { font-weight: 600; }
         
-        form { margin-top: 2rem; }
+        form { margin-top: 1.5rem; }
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
         .form-group { display: flex; flex-direction: column; gap: 0.3rem; }
         .form-group label { font-size: 0.9rem; font-weight: 600; color: var(--text-muted); }
         form input[type="text"] { padding: 0.8rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; outline: none; }
-        form input[type="text"]:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
+        form input[type="text"]:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(0, 194, 178, 0.15); }
 
         .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
         .option-card { border: 2px solid var(--border); padding: 1rem; border-radius: 8px; cursor: pointer; transition: 0.2s; }
-        .option-card:hover { border-color: var(--primary-light); }
+        .option-card:hover { border-color: var(--accent); }
         .option-card input { margin-right: 0.5rem; }
         .option-title { font-weight: bold; margin-bottom: 0.5rem; color: var(--primary); }
 
-        .bank-info { background: #e0f2fe; padding: 1rem; border-radius: 8px; border-left: 4px solid var(--primary); margin-bottom: 1.5rem; display: none; }
+        .bank-info { background: #eef8f9; padding: 1rem; border-radius: 8px; border-left: 4px solid var(--accent); margin-bottom: 1.5rem; display: none; }
         
         .summary-box { background: var(--bg); padding: 1.5rem; border-radius: 8px; margin-top: 1rem; text-align: right; }
         .summary-order-num { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 0.5rem; }
         .summary-total { font-size: 2rem; font-weight: 900; color: var(--primary); }
 
-        .submit-btn { width: 100%; background: var(--success); color: white; border: none; padding: 1.2rem; border-radius: 8px; font-size: 1.2rem; font-weight: bold; cursor: pointer; margin-top: 1rem; transition: 0.3s; }
-        .submit-btn:hover { background: #059669; transform: translateY(-2px); }
+        .submit-btn { width: 100%; background: var(--accent); color: white; border: none; padding: 1.2rem; border-radius: 8px; font-size: 1.2rem; font-weight: bold; cursor: pointer; margin-top: 1rem; transition: 0.3s; }
+        .submit-btn:hover { background: var(--accent-hover); transform: translateY(-2px); }
 
         .hidden { display: none !important; }
 
@@ -120,9 +372,11 @@
 <body>
 
 <header>
-    <div class="logo"><span>A</span> Apex Group</div>
+    <a href="#" class="logo-container" onclick="switchTab('apexgroup')">
+        <img src="k8rs19m.webp" alt="Apex Logo" class="logo-img">
+        <span class="logo-text">Apex Group</span>
+    </a>
     <div class="header-right">
-        <div class="help-notice">Při potížích kontaktujte vedení ➔</div>
         <nav>
             <button id="btn-apexgroup" class="active" onclick="switchTab('apexgroup')">Apex Group</button>
             <button id="btn-apexsecurity" onclick="switchTab('apexsecurity')">Apex Security</button>
@@ -139,35 +393,125 @@
 </header>
 
 <main>
+    <!-- TAB: APEX GROUP -->
     <div id="tab-apexgroup" class="tab-content active">
-        <div id="grid-apexgroup" class="grid"></div>
+        <div class="hero-banner">
+            <h1>Apex Group</h1>
+            <p>Profesionální, dostupné a důvěryhodné služby v celém regionu Red County.</p>
+        </div>
+
+        <div class="info-card">
+            <h2>O společnosti</h2>
+            <p>Naše společnost se specializuje na poskytování spolehlivých služeb v oblasti elektroinstalací, rozvozu a zabezpečení objektů.</p>
+            <p>Zajišťujeme profesionální elektro práce, od běžných oprav až po komplexní řešení elektrických instalací. Dbáme na kvalitu provedení, bezpečnost a spokojenost našich zákazníků.</p>
+            <p>Součástí našich služeb je také rozvoz po celém Red County, kde garantujeme rychlé a spolehlivé doručení zásilek či materiálu podle požadavků klienta.</p>
+            <p>Dále nabízíme hlídání a zabezpečení objektů v rámci Red County, kdy se staráme o ochranu majetku, kontrolu objektů a prevenci proti nežádoucím událostem.</p>
+            <p>Naším cílem je poskytovat profesionální, dostupné a důvěryhodné služby, na které se mohou zákazníci spolehnout.</p>
+        </div>
     </div>
 
+    <!-- TAB: APEX SECURITY -->
     <div id="tab-apexsecurity" class="tab-content">
+        <div class="hero-banner">
+            <h1>Apex Security</h1>
+            <p>Vývoj a výroba moderních lokalizačních a bezpečnostních systémů.</p>
+        </div>
+
+        <div class="info-card">
+            <h2>Informace</h2>
+            <p>Naše společnost se specializuje také na výrobu moderních lokátorů a sledovacích zařízení, která slouží k efektivnímu zabezpečení majetku, vozidel a důležitých předmětů.</p>
+            <p>Vyvíjíme a vyrábíme spolehlivé lokalizační systémy, které umožňují přesné určování polohy a zajišťují lepší kontrolu nad svěřeným majetkem. Každý produkt je navržen s důrazem na kvalitu, přesnost a dlouhou životnost.</p>
+            <p>Naše lokátory nacházejí využití v oblasti ochrany vozidel, zabezpečení objektů, sledování vybavení a dalších bezpečnostních řešení.</p>
+            <p>Díky spojení moderních technologií a zkušeností nabízíme zákazníkům efektivní řešení pro zvýšení bezpečnosti a kontroly.</p>
+        </div>
+
+        <h3 class="section-title">Apex Security - Objednávka</h3>
         <div id="grid-apexsecurity" class="grid"></div>
     </div>
 
+    <!-- TAB: APEX CLUB -->
     <div id="tab-apexclub" class="tab-content">
-        <div id="grid-apexclub" class="grid"></div>
+        <div class="hero-banner">
+            <h1>Apex Club</h1>
+            <p>Exkluzivní prostor a zábava v srdci Los Santos.</p>
+        </div>
+
+        <div class="info-card">
+            <h2>Klubové prostory</h2>
+            <p><strong>Lokace:</strong> Sídlíme v Los Santos, u horní benzínky.</p>
+        </div>
+
+        <h3 class="section-title">Fotogalerie podniku</h3>
+        <div class="gallery-grid">
+            <div class="photo-frame">
+                <span class="photo-frame-icon">📷</span>
+                <span>Rámeček na fotku klunu 1</span>
+            </div>
+            <div class="photo-frame">
+                <span class="photo-frame-icon">📷</span>
+                <span>Rámeček na fotku klubu 2</span>
+            </div>
+            <div class="photo-frame">
+                <span class="photo-frame-icon">📷</span>
+                <span>Rámeček na fotku klubu 3</span>
+            </div>
+        </div>
     </div>
 
+    <!-- TAB: KONTAKTY -->
     <div id="tab-kontakty" class="tab-content">
-        <div class="vedeni-box">
-            <h2>Vedení</h2>
-            <div class="vedeni-info">
-                <p><span>Matthew Hill</span> - Jednatel</p>
-                <p><span>Alexander Hill</span> - Generální ředitel</p>
-                <p><span>Noemi Graziani</span> - Výkonný ředitel - Apex Club</p>
-                <p><span>Jacob O'Brien</span> - Výkonný ředitel - Apex Security</p>
-                
-                <h3>Kontakt</h3>
-                <p>matthew.hill@post.ic</p>
-                <p>alexander.hill@post.ic</p>
+        <div class="hero-banner" style="text-align: center;">
+            <h1>Vedení & Kontakty</h1>
+            <p>Náš tým specialistů v čele Apex Group</p>
+        </div>
+
+        <div class="leadership-list">
+            <!-- Člen 1 -->
+            <div class="member-card">
+                <div class="member-photo-frame">
+                    <span>Fotka</span>
+                </div>
+                <div class="member-name">Matthew Hill</div>
+                <div class="member-role">Jednatel</div>
             </div>
+
+            <!-- Člen 2 -->
+            <div class="member-card">
+                <div class="member-photo-frame">
+                    <span>Fotka</span>
+                </div>
+                <div class="member-name">Alexander Hill</div>
+                <div class="member-role">Generální ředitel</div>
+            </div>
+
+            <!-- Člen 3 -->
+            <div class="member-card">
+                <div class="member-photo-frame">
+                    <span>Fotka</span>
+                </div>
+                <div class="member-name">Noemi Graziani</div>
+                <div class="member-role">Výkonný ředitel - Apex Club</div>
+            </div>
+
+            <!-- Člen 4 -->
+            <div class="member-card">
+                <div class="member-photo-frame">
+                    <span>Fotka</span>
+                </div>
+                <div class="member-name">Jacob O'Brien</div>
+                <div class="member-role">Výkonný ředitel - Apex Security</div>
+            </div>
+        </div>
+
+        <div class="contact-box">
+            <h3>Oficiální kontakty</h3>
+            <p>matthew.hill@post.ic</p>
+            <p>alexander.hill@post.ic</p>
         </div>
     </div>
 </main>
 
+<!-- KOŠÍK MODAL -->
 <div id="cart-modal" class="modal-overlay">
     <div class="modal">
         <button class="close-btn" onclick="closeCart()">✕</button>
@@ -257,7 +601,7 @@
             
             <div class="success-storno-info">
                 <strong>Potřebujete objednávku změnit nebo zrušit?</strong><br>
-                V případě storna napiš na post.ic vedení (viz sekce Kontakty).
+                V případě storna napište na post.ic vedení společnosti.
             </div>
 
             <button class="submit-btn" onclick="closeCart()" style="background: var(--primary); max-width: 250px; margin: 0 auto;">Zavřít</button>
@@ -268,7 +612,7 @@
 
 <script>
     // =========================================================
-    // 1. ZDE VYPLŇ SVÉ ÚDAJE PRO DISCORD A JSONBIN
+    // INTEGRACE DISCORD A JSONBIN
     // =========================================================
     const DISCORD_WEBHOOK = 'https://discord.com/api/webhooks/1509569723355103262/eT2CT_5ezEQ4rrEL-L_C4WTv_-Hq3pxw0ml-5pRuAE-HtHhbbNLhFXE4yqJ_2WP8l7u3';
     
@@ -278,28 +622,9 @@
     const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
     // =========================================================
 
-    // Změněny type ze 'suroviny' na 'apexgroup' a z 'vyrobky' na 'apexsecurity',
-    // aby se tyto položky správně zobrazovaly v nových záložkách (lze libovolně upravit)
+    // Jediný požadovaný produkt v kategórii Apex Security
     const produkty = [
-        { id: 1, name: 'Železo', type: 'apexgroup', price: 3500, stock: 0 },
-        { id: 2, name: 'Dřevo', type: 'apexgroup', price: 0, stock: 0 },
-        { id: 3, name: 'Uhlí', type: 'apexgroup', price: 0, stock: 0 },
-        { id: 4, name: 'Měď', type: 'apexgroup', price: 2200, stock: 0 },
-        { id: 5, name: 'Zinek', type: 'apexgroup', price: 2800, stock: 0 },
-        { id: 6, name: 'Zlato', type: 'apexgroup', price: 30000, stock: 0 },
-        { id: 7, name: 'Ocel', type: 'apexgroup', price: 0, stock: 0 },
-        { id: 8, name: 'Cín', type: 'apexgroup', price: 14999, stock: 0 },
-        { id: 9, name: 'Ledek', type: 'apexgroup', price: 8000, stock: 0 },
-        { id: 10, name: 'Síra', type: 'apexgroup', price: 3800, stock: 0 },
-        { id: 11, name: 'Hliník', type: 'apexgroup', price: 2222, stock: 0 },
-        { id: 12, name: 'Ozubené kolo', type: 'apexsecurity', price: 15000, stock: 0 },
-        { id: 13, name: 'Pružina', type: 'apexsecurity', price: 12000, stock: 0 },
-        { id: 14, name: 'Hřebíky', type: 'apexsecurity', price: 0, stock: 0 },
-        { id: 15, name: 'Šroubky', type: 'apexsecurity', price: 0, stock: 0 },
-        { id: 16, name: 'Taser', type: 'apexsecurity', price: 70000, stock: 0 },
-        { id: 17, name: 'Výboje do taseru', type: 'apexsecurity', price: 45000, stock: 0 },
-        { id: 18, name: 'Motorová pila', type: 'apexsecurity', price: 35000, stock: 0 },
-        { id: 19, name: 'Vysílačka M2', type: 'apexsecurity', price: 900000, stock: 0 },
+        { id: 1, name: 'Lokátor', type: 'apexsecurity', price: 50000, stock: 10 }
     ];
 
     let cart = [];
@@ -317,30 +642,26 @@
             const skladNaServeru = data.record;
             
             produkty.forEach(p => {
-                if (skladNaServeru[p.id] !== undefined) {
+                if (skladNaServeru && skladNaServeru[p.id] !== undefined) {
                     p.stock = parseInt(skladNaServeru[p.id], 10);
                 }
             });
 
-            renderProducts('apexgroup');
             renderProducts('apexsecurity');
-            renderProducts('apexclub');
         } catch (error) {
             console.error("Chyba při načítání skladu ze serveru:", error);
-            renderProducts('apexgroup');
             renderProducts('apexsecurity');
-            renderProducts('apexclub');
         }
     }
 
-    // Uložení (odečtení) zásob na JSONBin po nákupu
+    // Uložení zásob na JSONBin po nákupu
     async function saveCurrentStock() {
         try {
             const getRes = await fetch(JSONBIN_URL, { 
                 headers: { 'X-Master-Key': API_KEY } 
             });
             const getData = await getRes.json();
-            let aktualniSklad = getData.record;
+            let aktualniSklad = getData.record || {};
 
             cart.forEach(item => {
                 const id = item.product.id;
@@ -369,10 +690,12 @@
 
     function switchTab(tabName) {
         document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
-        document.getElementById(`btn-${tabName}`).classList.add('active');
+        const activeBtn = document.getElementById(`btn-${tabName}`);
+        if(activeBtn) activeBtn.classList.add('active');
         
         document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-        document.getElementById(`tab-${tabName}`).classList.add('active');
+        const activeTab = document.getElementById(`tab-${tabName}`);
+        if(activeTab) activeTab.classList.add('active');
     }
 
     function renderProducts(type) {
@@ -522,7 +845,7 @@
             username: "Apex Group - Obchod",
             embeds: [{
                 title: `🛒 Nová objednávka: ${currentOrderNumber}`,
-                color: 1982639,
+                color: 800316,
                 fields: [
                     { name: "👤 Zákazník", value: `**Jméno:** ${fname} ${lname}\n**post.ic:** ${postic}\n**Tel:** ${phone}`, inline: false },
                     { name: "🚚 Doručení", value: shipText, inline: true },
