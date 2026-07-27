@@ -104,25 +104,24 @@
             padding: 2.5rem;
             border-radius: 16px;
             margin-bottom: 2rem;
-            position: relative;
-            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
             box-shadow: 0 10px 25px rgba(12, 48, 60, 0.15);
         }
 
-        .hero-banner::after {
-            content: "";
-            position: absolute;
-            right: -20px;
-            bottom: -20px;
-            width: 180px;
-            height: 180px;
-            background: url('k8rs19m_2.webp') no-repeat center center / contain;
-            opacity: 0.15;
-            pointer-events: none;
-        }
-
+        .hero-banner-text { flex: 1; }
         .hero-banner h1 { font-size: 2.2rem; margin-bottom: 0.5rem; font-weight: 800; }
-        .hero-banner p { font-size: 1.1rem; opacity: 0.9; max-width: 700px; }
+        .hero-banner p { font-size: 1.1rem; opacity: 0.9; margin: 0; max-width: 700px; }
+
+        .hero-banner-img {
+            width: 140px;
+            height: 140px;
+            object-fit: contain;
+            flex-shrink: 0;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
+        }
 
         .info-card {
             background: var(--card-bg);
@@ -134,22 +133,8 @@
             margin-bottom: 2rem;
         }
 
-        .info-card h2 {
-            color: var(--primary);
-            font-size: 1.6rem;
-            margin-bottom: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-
-        .info-card p {
-            color: var(--text-main);
-            font-size: 1.05rem;
-            margin-bottom: 1rem;
-            line-height: 1.7;
-        }
-
+        .info-card h2 { color: var(--primary); font-size: 1.6rem; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.6rem; }
+        .info-card p { color: var(--text-main); font-size: 1.05rem; margin-bottom: 1rem; line-height: 1.7; }
         .info-card p:last-child { margin-bottom: 0; }
 
         /* GRID & PRODUCTS */
@@ -299,16 +284,8 @@
             box-shadow: 0 8px 20px rgba(12, 48, 60, 0.15);
         }
 
-        .contact-box h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: var(--accent);
-        }
-
-        .contact-box p {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
+        .contact-box h3 { font-size: 1.4rem; margin-bottom: 1rem; color: var(--accent); }
+        .contact-box p { font-size: 1.1rem; margin-bottom: 0.5rem; }
 
         /* MODAL */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(12, 48, 60, 0.7); backdrop-filter: blur(4px); display: none; justify-content: center; align-items: center; z-index: 1000; }
@@ -353,6 +330,9 @@
             header { justify-content: center; flex-direction: column; text-align: center; }
             .header-right { flex-direction: column; gap: 0.5rem; }
             .form-grid, .options-grid { grid-template-columns: 1fr; }
+            .hero-banner { flex-direction: column-reverse; text-align: center; padding: 2rem 1.5rem; }
+            .hero-banner p { margin: 0 auto; }
+            .hero-banner-img { width: 100px; height: 100px; }
         }
     </style>
 </head>
@@ -360,7 +340,7 @@
 
 <header>
     <a class="logo-container" onclick="switchTab('apexgroup')">
-        <img src="k8rs19m_2.webp" alt="Apex Logo" class="logo-img">
+        <img src="1bz2b30_3.webp" alt="Apex Logo" class="logo-img">
         <span class="logo-text">Apex Group</span>
     </a>
     <div class="header-right">
@@ -383,8 +363,11 @@
     <!-- TAB: APEX GROUP -->
     <div id="tab-apexgroup" class="tab-content active">
         <div class="hero-banner">
-            <h1>Apex Group</h1>
-            <p>Profesionální, dostupné a důvěryhodné služby v celém regionu Red County.</p>
+            <div class="hero-banner-text">
+                <h1>Apex Group</h1>
+                <p>Profesionální, dostupné a důvěryhodné služby v celém regionu Red County.</p>
+            </div>
+            <img src="k8rs19m_2.webp" alt="Apex Group Logo" class="hero-banner-img">
         </div>
 
         <div class="info-card">
@@ -400,8 +383,11 @@
     <!-- TAB: APEX SECURITY -->
     <div id="tab-apexsecurity" class="tab-content">
         <div class="hero-banner">
-            <h1>Apex Security</h1>
-            <p>Vývoj a výroba moderních lokalizačních a bezpečnostních systémů.</p>
+            <div class="hero-banner-text">
+                <h1>Apex Security</h1>
+                <p>Vývoj a výroba moderních lokalizačních a bezpečnostních systémů.</p>
+            </div>
+            <img src="k8rs19m_2.webp" alt="Apex Security Logo" class="hero-banner-img">
         </div>
 
         <div class="info-card">
@@ -419,8 +405,11 @@
     <!-- TAB: APEX CLUB -->
     <div id="tab-apexclub" class="tab-content">
         <div class="hero-banner">
-            <h1>Apex Club</h1>
-            <p>Exkluzivní prostor a zábava v srdci Los Santos.</p>
+            <div class="hero-banner-text">
+                <h1>Apex Club</h1>
+                <p>Exkluzivní prostor a zábava v srdci Los Santos.</p>
+            </div>
+            <img src="k8rs19m_2.webp" alt="Apex Club Logo" class="hero-banner-img">
         </div>
 
         <div class="info-card">
@@ -454,9 +443,11 @@
     <!-- TAB: KONTAKTY -->
     <div id="tab-kontakty" class="tab-content">
         
-        <div class="hero-banner" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-            <h1 style="margin-bottom: 0.5rem;">Vedení & Kontakty</h1>
-            <p style="margin: 0;">Náš tým specialistů v čele Apex Group</p>
+        <div class="hero-banner" style="justify-content: center; text-align: center;">
+            <div class="hero-banner-text">
+                <h1 style="margin-bottom: 0.5rem;">Vedení & Kontakty</h1>
+                <p style="margin: 0 auto;">Náš tým specialistů v čele Apex Group</p>
+            </div>
         </div>
 
         <div class="leadership-list">
