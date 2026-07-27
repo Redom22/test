@@ -195,33 +195,20 @@
         }
         .controls button:hover { background: var(--primary-light); }
 
-        /* CLUB GALLERY (1 velká, 1 malá na mapu) */
-        .club-gallery {
-            display: flex;
-            flex-direction: column;
+        /* GALLERY FRAMES */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1.5rem;
             margin-top: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .club-gallery {
-                flex-direction: row;
-                align-items: center;
-            }
-            .club-photo {
-                flex: 2;
-                height: 380px;
-            }
-            .map-photo {
-                flex: 1;
-                height: 250px;
-            }
+            margin-bottom: 2rem;
         }
 
         .photo-frame {
             background: #ffffff;
             border: 2px dashed var(--border);
             border-radius: 12px;
+            height: 220px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -366,10 +353,6 @@
             header { justify-content: center; flex-direction: column; text-align: center; }
             .header-right { flex-direction: column; gap: 0.5rem; }
             .form-grid, .options-grid { grid-template-columns: 1fr; }
-            .club-gallery {
-                /* Na mobilech budou fotky nad sebou, obě stejně vysoké */
-            }
-            .photo-frame { height: 250px; }
         }
     </style>
 </head>
@@ -445,13 +428,25 @@
             <p><strong>Lokace:</strong> Sídlíme v Los Santos, u horní benzínky.</p>
         </div>
 
-        <h3 class="section-title">Fotogalerie podniku & Mapa</h3>
-        <div class="club-gallery">
-            <div class="photo-frame club-photo">
-                <img src="klub.jpg" alt="Apex Club" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <span style="display:none;">Chybí klub.jpg</span>
+        <h3 class="section-title">Fotogalerie podniku</h3>
+        <div class="gallery-grid">
+            <div class="photo-frame">
+                <img src="klub1.jpg" alt="Apex Club 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display:none;">Chybí klub1.jpg</span>
             </div>
-            <div class="photo-frame map-photo">
+            <div class="photo-frame">
+                <img src="klub2.jpg" alt="Apex Club 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display:none;">Chybí klub2.jpg</span>
+            </div>
+            <div class="photo-frame">
+                <img src="klub3.jpg" alt="Apex Club 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display:none;">Chybí klub3.jpg</span>
+            </div>
+        </div>
+
+        <h3 class="section-title">Mapa - Kde nás najdete</h3>
+        <div style="max-width: 600px; margin: 0 auto;">
+            <div class="photo-frame" style="height: 280px;">
                 <img src="mapa.jpg" alt="Mapa klubu" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <span style="display:none;">Chybí mapa.jpg</span>
             </div>
@@ -617,7 +612,7 @@
 
 <script>
     // =========================================================
-    // DISCORD KONFIGURACE (JSONBin odebrán, protože neřešíme omezené zásoby)
+    // DISCORD KONFIGURACE
     // =========================================================
     const DISCORD_WEBHOOK = 'https://discord.com/api/webhooks/1509569723355103262/eT2CT_5ezEQ4rrEL-L_C4WTv_-Hq3pxw0ml-5pRuAE-HtHhbbNLhFXE4yqJ_2WP8l7u3';
     // =========================================================
